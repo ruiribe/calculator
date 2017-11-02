@@ -25,7 +25,7 @@ public class CalculatorController {
 	private DirectExchange exchange;
 
 	@Bean
-	public MessageConverter jsonMessageConverter() {
+	private MessageConverter jsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
 	}
 
