@@ -52,5 +52,4 @@ public class ServerConfig {
 	public Server server() {
 		return new Server();
 	}
-
 }
