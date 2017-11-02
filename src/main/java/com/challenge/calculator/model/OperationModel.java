@@ -14,8 +14,16 @@ public class OperationModel implements Serializable {
 	private BigDecimal a;
 	private BigDecimal b;
 	private OperationsEnum operation;
+	private String uuid;
+	
+	public OperationModel(){
+	}
 
-	public OperationModel() {
+	public OperationModel(BigDecimal a, BigDecimal b, OperationsEnum operation, String uuid) {
+		this.a = a;
+		this.b = b;
+		this.operation = operation;
+		this.uuid = uuid;
 	}
 
 	public BigDecimal getA() {
@@ -42,9 +50,17 @@ public class OperationModel implements Serializable {
 		this.operation = operation;
 	}
 
+	public String getUuid() {
+		return uuid;
+	}
+
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
+	}
+
 	@Override
 	public String toString() {
-		return "OperationModel [a=" + a + ", b=" + b + ", operation=" + operation + "]";
+		return "OperationModel [a=" + a + ", b=" + b + ", operation=" + operation + ", uuid=" + uuid + "]";
 	}
 
 }
