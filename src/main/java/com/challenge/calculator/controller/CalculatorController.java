@@ -1,5 +1,7 @@
 package com.challenge.calculator.controller;
 
+import java.math.BigDecimal;
+
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
@@ -23,62 +25,62 @@ public class CalculatorController {
 	private DirectExchange exchange;
 
 	int start = 0;
-	
+
 	@Bean
-	public MessageConverter jsonMessageConverter(){
-	    return new Jackson2JsonMessageConverter();
+	public MessageConverter jsonMessageConverter() {
+		return new Jackson2JsonMessageConverter();
 	}
 
-    @RequestMapping("/sum")
-    public String  sum(@RequestParam(value="a") Integer a, @RequestParam(value="b") Integer b) {
-    	System.out.println(" [x] Requesting sum(" + a + ", " + b +")");
-    	OperationModel model = new OperationModel();
-    	model.setA(a);
-    	model.setB(b);
-    	model.setOperation(OperationsEnum.SUM);
-    	template.setMessageConverter(jsonMessageConverter());
+	@RequestMapping("/sum")
+	public String sum(@RequestParam(value = "a") BigDecimal a, @RequestParam(value = "b") BigDecimal b) {
+		System.out.println(" [x] Requesting sum(" + a + ", " + b + ")");
+		OperationModel model = new OperationModel();
+		model.setA(a);
+		model.setB(b);
+		model.setOperation(OperationsEnum.SUM);
+		template.setMessageConverter(jsonMessageConverter());
+		BigDecimal response = (BigDecimal) template.convertSendAndReceive(exchange.getName(), "rpc", model);
+		System.out.println(" [.] Got '" + response + "'");
+		return response + "";
+	}
+
+	@RequestMapping("/subtract")
+	public String subtract(@RequestParam(value = "a") BigDecimal a, @RequestParam(value = "b") BigDecimal b) {
+		System.out.println(" [x] Requesting sum(" + a + ", " + b + ")");
+		OperationModel model = new OperationModel();
+		model.setA(a);
+		model.setB(b);
+		model.setOperation(OperationsEnum.SUBTRACT);
+		template.setMessageConverter(jsonMessageConverter());
 		Double response = (Double) template.convertSendAndReceive(exchange.getName(), "rpc", model);
 		System.out.println(" [.] Got '" + response + "'");
 		return response + "";
-    }
-    
-    @RequestMapping("/subtract")
-    public String  subtract(@RequestParam(value="a") Integer a, @RequestParam(value="b") Integer b) {
-    	System.out.println(" [x] Requesting sum(" + a + ", " + b +")");
-    	OperationModel model = new OperationModel();
-    	model.setA(a);
-    	model.setB(b);
-    	model.setOperation(OperationsEnum.SUBTRACT);
-    	template.setMessageConverter(jsonMessageConverter());
+	}
+
+	@RequestMapping("/multiply")
+	public String multiply(@RequestParam(value = "a") BigDecimal a, @RequestParam(value = "b") BigDecimal b) {
+		System.out.println(" [x] Requesting sum(" + a + ", " + b + ")");
+		OperationModel model = new OperationModel();
+		model.setA(a);
+		model.setB(b);
+		model.setOperation(OperationsEnum.MULTIPLY);
+		template.setMessageConverter(jsonMessageConverter());
 		Double response = (Double) template.convertSendAndReceive(exchange.getName(), "rpc", model);
 		System.out.println(" [.] Got '" + response + "'");
 		return response + "";
-    }
-    
-    @RequestMapping("/multiply")
-    public String  multiply(@RequestParam(value="a") Integer a, @RequestParam(value="b") Integer b) {
-    	System.out.println(" [x] Requesting sum(" + a + ", " + b +")");
-    	OperationModel model = new OperationModel();
-    	model.setA(a);
-    	model.setB(b);
-    	model.setOperation(OperationsEnum.MULTIPLY);
-    	template.setMessageConverter(jsonMessageConverter());
+	}
+
+	@RequestMapping("/divide")
+	public String divide(@RequestParam(value = "a") BigDecimal a, @RequestParam(value = "b") BigDecimal b) {
+		System.out.println(" [x] Requesting sum(" + a + ", " + b + ")");
+		OperationModel model = new OperationModel();
+		model.setA(a);
+		model.setB(b);
+		model.setOperation(OperationsEnum.DIVIDE);
+		template.setMessageConverter(jsonMessageConverter());
 		Double response = (Double) template.convertSendAndReceive(exchange.getName(), "rpc", model);
 		System.out.println(" [.] Got '" + response + "'");
 		return response + "";
-    }
-    
-    @RequestMapping("/divide")
-    public String  divide(@RequestParam(value="a") Integer a, @RequestParam(value="b") Integer b) {
-    	System.out.println(" [x] Requesting sum(" + a + ", " + b +")");
-    	OperationModel model = new OperationModel();
-    	model.setA(a);
-    	model.setB(b);
-    	model.setOperation(OperationsEnum.DIVIDE);
-    	template.setMessageConverter(jsonMessageConverter());
-		Double response = (Double) template.convertSendAndReceive(exchange.getName(), "rpc", model);
-		System.out.println(" [.] Got '" + response + "'");
-		return response + "";
-    }
-    
+	}
+
 }

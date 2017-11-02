@@ -1,5 +1,7 @@
 package com.challenge.calculator.enums;
 
+import java.math.BigDecimal;
+
 public enum OperationsEnum {
 
 		SUM,
@@ -7,16 +9,16 @@ public enum OperationsEnum {
 	    MULTIPLY,
 	    DIVIDE;
 	
-	public double calculate(double x, double y) {
+	public BigDecimal calculate(BigDecimal a, BigDecimal b) {
 	        switch (this) {
 	            case SUM:
-	                return x + y;
+	                return a.add(b);
 	            case SUBTRACT:
-	                return x - y;
+	                return a.subtract(b);
 	            case MULTIPLY:
-	                return x * y;
+	                return a.multiply(b);
 	            case DIVIDE:
-	                return x / y;
+	                return a.divide(b);
 	            default:
 	                throw new AssertionError("Unknown operations " + this);
 	        }
