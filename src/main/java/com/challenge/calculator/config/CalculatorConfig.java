@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Profile;
 
 import com.challenge.calculator.server.Server;
 
-@Profile({"calculator"})
 @Configuration
 public class CalculatorConfig {
 	
