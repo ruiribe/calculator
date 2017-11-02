@@ -24,8 +24,6 @@ public class CalculatorController {
 	@Autowired
 	private DirectExchange exchange;
 
-	int start = 0;
-
 	@Bean
 	public MessageConverter jsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
