@@ -6,8 +6,8 @@ public enum OperationsEnum {
 	    SUBTRACT,
 	    MULTIPLY,
 	    DIVIDE;
-
-	    double calculate(double x, double y) {
+	
+	public double calculate(double x, double y) {
 	        switch (this) {
 	            case SUM:
 	                return x + y;
