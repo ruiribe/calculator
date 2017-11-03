@@ -6,6 +6,7 @@ Spring boot application that exposes a REST API, and allows to calculate the res
 - Java(v8)
 - Maven(v3)
 - Spring Boot(v1.5.8.RELEASE)
+- RabbitMQ(v3.1.12)
 - Docker(17.06.0-ce)
 - Docker-compose(v1.13.0)
 
@@ -16,6 +17,12 @@ Spring boot application that exposes a REST API, and allows to calculate the res
 - Maven (https://maven.apache.org/install.html)
 - Docker (https://docs.docker.com/engine/installation/)
 - Docker Compose (https://docs.docker.com/compose/install/)
+
+### RabbitMQ
+Used Docker-Compose to run RabbitMQ:
+```
+docker-compose up
+```
 
 ### Profiles
 Two profiles were created to run the application: Client and Server
