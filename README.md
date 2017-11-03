@@ -22,13 +22,13 @@ Two profiles were created to run the application: Client and Server
 #### Client
 To run the application as a Client:
 ```
-java -jar -Dspring.profiles.active=client target/calculator-0.0.1-SNAPSHOT.jar --spring.profiles.active=client
+java -jar -Dspring.profiles.active=client target/calculator-0.0.1-SNAPSHOT.jar
 ```
 Application will run on Port 8080.
 #### Server
 To run the application as a Client:
 ```
-java -jar -Dspring.profiles.active=server target/calculator-0.0.1-SNAPSHOT.jar --spring.profiles.active=server
+java -jar -Dspring.profiles.active=server target/calculator-0.0.1-SNAPSHOT.jar
 ```
 Application will run on Port 8090.
 ### API REST
