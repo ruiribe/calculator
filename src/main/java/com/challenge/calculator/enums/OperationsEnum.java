@@ -1,6 +1,7 @@
 package com.challenge.calculator.enums;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public enum OperationsEnum {
 
@@ -18,9 +19,9 @@ public enum OperationsEnum {
 	            case MULTIPLY:
 	                return a.multiply(b);
 	            case DIVIDE:
-	                return a.divide(b);
+	                return a.divide(b, 10, RoundingMode.HALF_UP); //to avoid  java.lang.ArithmeticException: Non-terminating decimal expansion; no exact representable decimal result.
 	            default:
-	                throw new AssertionError("Unknown operations " + this);
+	                throw new IllegalArgumentException("Unknown operations " + this);
 	        }
 	    }
 }

@@ -15,11 +15,10 @@ public class Server {
 
 	@RabbitListener(queues = "calculator.rpc.requests")
 	public BigDecimal sum(OperationModel model) {
-        MDC.put("mdcData",String.format("[requestId:%s] ", model.getUuid()));
-		BigDecimal result = null;
 		LOG.info(" [x] Received request for ");
+        MDC.put("mdcData",String.format("[requestId:%s] ", model.getUuid()));
 		OperationsEnum op = model.getOperation();
-		result = op.calculate(model.getA(), model.getB());
+		BigDecimal result = op.calculate(model.getA(), model.getB());
 		LOG.info(" [.] Returned " + result);
 		return result;
 	}
