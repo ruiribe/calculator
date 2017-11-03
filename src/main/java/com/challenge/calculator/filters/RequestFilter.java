@@ -1,4 +1,4 @@
-package com.challenge.calculator;
+package com.challenge.calculator.filters;
 
 import org.slf4j.MDC;
 import org.springframework.stereotype.Component;
